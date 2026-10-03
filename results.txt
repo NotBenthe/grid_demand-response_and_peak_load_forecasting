@@ -1,0 +1,30 @@
+==================================================
+ E.ON Smart Grid Forecasting & DR Pipeline 
+==================================================
+
+[1/5] Ingesting smart meter, weather, and holiday data (num_blocks=15)...
+
+[2/5] Engineering interaction, Fourier seasonal, & lag features...
+
+[3/5] Training Models...
+  -> Training Original Method (HistGradientBoosting)...
+     MAE: 4.433 | RMSE: 5.838 | R²: 0.987
+  -> Training Addition (PyTorch Residual NN)...
+     MAE: 4.900 | RMSE: 6.411 | R²: 0.984
+
+[4/5] Executing Demand-Response Load-Shifting Comparison...
+
+--- Demand Response Optimization Comparison ---
+Metric                           | Original (GB)   | PyTorch NN     
+--------------------------------------------------------------------
+Initial PAR                      | 1.807           | 1.807          
+Optimized PAR                    | 1.602           | 1.604          
+Peak Trigger Threshold (kWh)     | 228.63          | 233.99         
+Max Peak Shaved (kWh)            | 41.17           | 41.17          
+Total Energy Shifted (kWh)       | 28966.38        | 28992.98       
+
+[5/5] Generating Visual Evaluation Plots...
+  -> Generated 4 plots saved in './plots/'.
+
+Pipeline execution completed successfully.
+Summary metrics logged to 'results.txt'. Plots saved in './plots/'.
